@@ -1,4 +1,4 @@
-package unidad1.expresiones;
+package unidad1;
 
 /*
  * Averigua como escribir una expresión que multiplique un número entero
@@ -7,7 +7,7 @@ package unidad1.expresiones;
  * 
  */
 
-public class Ejercicio5 {
+public class Ejercicio4 {
 
 	public static void main(String[] args) {
 		int a = 25;

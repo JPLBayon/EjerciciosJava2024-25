@@ -1,4 +1,4 @@
-package unidad1.expresiones;
+package unidad1;
 
 /*
  * Dadas las variables a, b, c, d y e de tipo int, inicializadas con los

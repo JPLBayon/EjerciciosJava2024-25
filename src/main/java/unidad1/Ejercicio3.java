@@ -1,4 +1,4 @@
-package unidad1.expresiones;
+package unidad1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
