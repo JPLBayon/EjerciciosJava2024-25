@@ -24,6 +24,7 @@ public class Ejercicio3 {
 		Scanner s = new Scanner(System.in);
 		System.out.println("Número: ");
 		int numero = s.nextInt();
+		s.close();
 		boolean par = esPar(numero);
 		if (!par)
 			System.out.println("El número es impar");
