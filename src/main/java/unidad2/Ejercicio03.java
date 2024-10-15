@@ -10,7 +10,7 @@ import java.util.Scanner;
  * 
  */
 
-public class Ejercicio3 {
+public class Ejercicio03 {
 	
 	static boolean esPar (int numero) {
 		return numero % 2 == 0;
