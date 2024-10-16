@@ -22,11 +22,30 @@ public class Ejercicio20 {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("n: ");
 		int n = Integer.parseInt(in.readLine());
-		int asteriscos = n;
-		for (int i=0; i<n; i++) {
-			for (int j=0; j<asteriscos; j++) 
+		
+//		for (int i=0; i<n; i++) {
+//			for (int j=0; j<n - i; j++) 
+//				System.out.print('*');
+//			System.out.println();
+//		}
+		
+		for (int i=4; i>0; i--) {
+			for (int j=0; j<i; j++) 
 				System.out.print('*');
-			asteriscos--;
+			System.out.println();
+		}
+		
+		for (int i=0; i<n; i++) {
+			for (int j=0; j<i; j++)
+				System.out.print(' ');
+			for (int j=0; j<n - i; j++) 
+				System.out.print('*');
+			System.out.println();
+		}
+		
+		for (int i=1; i<=n; i++) {
+			for (int j=0; j<i; j++) 
+				System.out.print('*');
 			System.out.println();
 		}
 		
