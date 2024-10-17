@@ -1,4 +1,4 @@
-package unidad1;
+package unidad2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,32 +21,32 @@ public class Ejercicio06 {
 			System.out.println(numeroRomano(n));
 	}
 	
-//	static Integer leerNumero(BufferedReader in) throws IOException {
-//		System.out.println("Introduce un número entre 1 y 10");
-//		String linea = in.readLine();
-//		if (linea == null)
-//			return null;
-//		else
-//			return Integer.parseInt(linea);
-//	}
-	
 	static Integer leerNumero(BufferedReader in) throws IOException {
-		Integer n;
-		do {
-			System.out.println("Introduce un número entre 1 y 10");
-			String linea = in.readLine();
-			if (linea == null)
-				return null;
-			else
-				try {
-					n = Integer.parseInt(linea);
-				} catch (NumberFormatException e) {
-					System.out.println("no has introducido un número, inténtalo de nuevo");
-					n = null;
-				}
-		} while (n == null);
-		return n;
+		System.out.println("Introduce un número entre 1 y 10");
+		String linea = in.readLine();
+		if (linea == null)
+			return null;
+		else
+			return Integer.parseInt(linea);
 	}
+	
+//	static Integer leerNumero(BufferedReader in) throws IOException {
+//		Integer n;
+//		do {
+//			System.out.println("Introduce un número entre 1 y 10");
+//			String linea = in.readLine();
+//			if (linea == null)
+//				return null;
+//			else
+//				try {
+//					n = Integer.parseInt(linea);
+//				} catch (NumberFormatException e) {
+//					System.out.println("no has introducido un número, inténtalo de nuevo");
+//					n = null;
+//				}
+//		} while (n == null);
+//		return n;
+//	}
 	
 	static String numeroRomano(int n) {
 		switch (n) {
