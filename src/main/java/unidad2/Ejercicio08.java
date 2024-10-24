@@ -28,10 +28,12 @@ public class Ejercicio08 {
 	
 	static String trianguloSegunLados(double l1, double l2, double l3) {
 		
+		return null;
 	}
 
 	static String trianguloSegunAngulos(double a1, double a2, double a3) {
 		
+		return null;
 	}
 	
 }
