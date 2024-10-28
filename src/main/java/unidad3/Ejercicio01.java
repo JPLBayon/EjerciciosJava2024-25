@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
  * 
  */
 
-public class Ejercicio1 {
+public class Ejercicio01 {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
