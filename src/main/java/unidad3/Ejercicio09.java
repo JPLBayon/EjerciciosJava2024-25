@@ -28,18 +28,38 @@ import java.util.Scanner;
 
  */
 
+/*
+M135t
+
+b57X n1335$
+		L91
+ */
+
 public class Ejercicio09 {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
+		double total = 0;
+		double aux;
+		
 		System.out.print("> ");
 		while (scanner.hasNext()) {
 			String s = scanner.next();
 			char cInicial = s.charAt(0);
 			int centro = Integer.parseInt(s.substring(1, s.length() - 1));
 			char cFinal = s.charAt(s.length() - 1);
+			if (Character.isUpperCase(cInicial))
+				aux = cInicial * centro;
+			else
+				aux = centro / cInicial;
+			if (Character.isAlphabetic(cFinal))
+				total += Math.sqrt(aux);
+			else if (Character.isDigit(cFinal))
+				total += Math.log(cFinal);
+			else
+				total += Math.pow(Math.E, aux);
 		}
-
+		System.out.println(total);
 	}
 
 }
