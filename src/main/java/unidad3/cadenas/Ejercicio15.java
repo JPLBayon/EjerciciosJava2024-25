@@ -15,7 +15,7 @@ public class Ejercicio15 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		String linea;
-		System.out.print("Nombre: ");
+		System.out.print("> ");
 		while ((linea = in.readLine().trim()) != null) {
 			System.out.println(subcadenaMasLargaSinDuplicados(linea));
 		}
