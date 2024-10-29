@@ -1,4 +1,4 @@
-package unidad3;
+package unidad3.cadenas;
 
 /*
  * Escribe un método que acepte una cadena y retorne otra obtenida como resultado de
