@@ -3,6 +3,7 @@ package unidad3.regex;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /*
@@ -24,11 +25,29 @@ public class Ejercicio2 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		Pattern regex = Pattern.compile("(?:\\p{Lu}\\p{Ll}+)(?: \\p{Lu}\\p{Ll}+)+");
-		System.out.println("> ");
+		System.out.print("> ");
 		String linea;
 		while ((linea = in.readLine()) != null) {
-			
+			Matcher m = regex.matcher(linea);
+			while (m.find())
+				System.out.println(m.group());
+			System.out.print("> ");
 		}
 	}
 
+//	public static void main(String[] args) throws IOException {
+//		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+//		Pattern regex = Pattern.compile("(?:\\p{Lu}\\p{Ll}+)(?: \\p{Lu}\\p{Ll}+)+");
+//		System.out.print("> ");
+//		String linea;
+//		String nombre;
+//		while ((linea = in.readLine()) != null) {
+//			Scanner s = new Scanner(linea);
+//			while ((nombre = s.findWithinHorizon(regex, 0)) != null)
+//				System.out.println(nombre);
+//			System.out.print("> ");
+//		}
+//	}
+	
+	
 }
