@@ -23,7 +23,8 @@ public class Ejercicio6 {
 		Pattern pattern = Pattern.compile("\\<a.+?href\\=\"(.*?)\"");
 		
 		try (Scanner s = new Scanner(new File(args[0]))) {
-			
+			while (s.findWithinHorizon(pattern, 0) != null)
+				System.out.println(s.match().group(1));
 		}
 	}
 
