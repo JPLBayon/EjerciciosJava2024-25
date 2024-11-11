@@ -1,9 +1,11 @@
-package unidad3.regex;
+package unidad3.regex.ejercicio4;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.Locale;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -31,60 +33,78 @@ import java.util.Scanner;
 >silla<<79,5-6
 */
 
-public class Ejercicio4 {
+public class Ejercicio4v2 {
 
-//	public static void main(String[] args) throws IOException, ParseException {
-//		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-//		Pattern pattern = Pattern.compile(">>\\p{L}+<<(\\d+(?:[.,]\\d{1,2})?):(\\d+)");
-//		String linea;
-//		System.out.print("> ");
-//		double total = 0;
-//		System.out.println("Compra:");
-//		while ((linea = in.readLine()) != null) {
-//			Matcher matcher = pattern.matcher(linea);
-//			if (matcher.matches()) {
-//				NumberFormat format = NumberFormat.getInstance(Locale.getDefault());
-//				Number number = format.parse(matcher.group(1));
-//				double precio = number.doubleValue();
-//				double cantidad = Double.parseDouble(matcher.group(2));
-//				total += precio * cantidad;
-//				}
-//			System.out.print("> ");
-//		}
-//		System.out.print("Importe total:");
-//		System.out.println(total);
-//	}
-	
 	public static void main(String[] args) throws IOException, ParseException {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 //		Pattern pattern = Pattern.compile(">>\\p{L}+<<(\\d+(?:[.,]\\d{1,2})?):(\\d+)");
 		String linea;
-		System.out.print("> ");
 		double total = 0;
-		System.out.println("Compra:");
+		System.out.print("> ");
 		while ((linea = in.readLine()) != null) {
 			Double parcial = analizarLinea(linea);
 			if (parcial != null)
 				total += parcial;
+			System.out.print("> ");
 		}
 		System.out.print("Importe total:");
 		System.out.println(total);
 	}
-	
+
+	static NumberFormat format = NumberFormat.getInstance(Locale.getDefault());
+
 	static Double analizarLinea(String linea) {
-		Scanner s = new Scanner(linea);
-		try {
+		Double resultado = null;
+		int i = 2;
+		try (Scanner s = new Scanner(linea)) {
 			s.skip(">>");
+			i = s.match().end() + 2;
 			try {
 				s.skip("\\p{L}+");
+				i = s.match().end() + 2;
+				try {
+					s.skip("<<");
+					i = s.match().end() + 2;
+					try {
+						s.skip("\\d+(?:[.,]\\d{1,2})?");
+						i = s.match().end() + 2;
+						Number number;
+						try {
+							number = format.parse(s.match().group());
+							resultado = number.doubleValue();
+						} catch (ParseException e) {
+						}
+						try {
+							s.skip(":");
+							try {
+								s.skip("\\d+");
+								resultado *= Double.parseDouble(s.match().group());
+							} catch (NoSuchElementException e) {
+								mostrarError("una cantidad", i);
+							}
+						} catch (NoSuchElementException e) {
+							mostrarError("\":\"", i);
+						}
+					} catch (NoSuchElementException e) {
+						mostrarError("un precio", i);
+					}
+				} catch (NoSuchElementException e) {
+					mostrarError("\"<<\"", i);
+				}
 			} catch (NoSuchElementException e) {
-					System.out.println("Error: se esperaba un nombre");
+				mostrarError("un nombre", i);
 			}
+			return resultado;
 		} catch (NoSuchElementException e) {
-			System.out.println("Error: se esperaba >>");
+			mostrarError("\">>\"", i);
 		}
 		return null;
 	}
 	
+	static void mostrarError(String token, int i) {
+		System.out.println(" ".repeat(i) + "^");
+		System.out.println("ERROR: se esperaba " + token);
+	}
+
 
 }
