@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.regex.Pattern;https://stackoverflow.com/questions/816142/strings-maximum-length-in-java-calling-length-method
+import java.util.regex.Pattern;
 
 public class Ejemplo {
 
