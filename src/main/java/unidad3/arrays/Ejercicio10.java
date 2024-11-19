@@ -36,6 +36,8 @@ public class Ejercicio10 {
 		for (int i=0; i<m.length; i++)
 			for (int j=0; j<m[i].length; j++)
 				m[i][j] = r.nextInt(1000);
+		
+		sumaColumnas(new int[][] {});
 	}
 
 //	static int [] sumaFilas(int [][] m) {
@@ -52,18 +54,55 @@ public class Ejercicio10 {
 //	}
 	
 	static int [] sumaFilas(int [][] m) {
-		int [] v = new int[m.length];
-		for (int i=0; i<m.length; i++)
-			for(int j=0; j<m[i].length; j++)
-				v[i] += m[i][j];
-		return v;
+		if (m.length == 0)
+			return null;
+		else {
+			int [] v = new int[m.length];
+			for (int f=0; f<m.length; f++)
+				for(int c=0; c<m[f].length; c++)
+					v[f] += m[f][c];
+			return v;
+		}
 	}
 	
+//	static int [] sumaColumnas(int [][] m) {
+//		if (m.length == 0)
+//			return null;
+//		else {
+//			int [] v = new int[m[0].length];
+//			for (int c=0; c<m[0].length; c++)
+//				for (int f=0; f<m.length; f++)
+//					v[c] += m[f][c];
+//			return v;
+//		}
+//	}
+	
 	static int [] sumaColumnas(int [][] m) {
-		int [] v;
-		
-		
-		return v;
+		if (m.length == 0)
+			return null;
+		else {
+			int [] v = new int[m[0].length];
+			for (int f=0; f<m.length; f++)
+				for (int c=0; c<m[f].length; c++)
+					v[c] += m[f][c];
+			return v;
+		}
+	}
+	
+	static int[][] sumaFilasColumnas(int [][] m) {
+		if (m.length == 0)
+			return null;
+		else {
+			int [][] s = new int[2][];
+			s[0] = new int[m.length];
+			s[1] = new int[m[0].length];
+			for (int f=0; f<m.length; f++)
+				for (int c=0; c<m[f].length; c++) {
+					s[0][f] += m[f][c];
+					s[1][c] += m[f][c];
+				}
+			return s;
+		}		
 	}
 	
 }
