@@ -12,7 +12,7 @@ import java.util.Random;
  * 
  */
 
-public class Ejercicio1 {
+public class Ejercicio01 {
 
 //	public static void main(String[] args) throws IOException {
 //		Random r = new Random();

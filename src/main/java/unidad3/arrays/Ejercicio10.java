@@ -1,5 +1,6 @@
 package unidad3.arrays;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /*
@@ -32,12 +33,17 @@ public class Ejercicio10 {
 	
 	public static void main(String[] args) {
 		Random r = new Random();
-		int [][] m = new int[r.nextInt(19) + 2][r.nextInt(19) + 2];
-		for (int i=0; i<m.length; i++)
-			for (int j=0; j<m[i].length; j++)
-				m[i][j] = r.nextInt(1000);
+//		int [][] m = new int[r.nextInt(19) + 2][r.nextInt(19) + 2];
+//		for (int i=0; i<m.length; i++)
+//			for (int j=0; j<m[i].length; j++)
+//				m[i][j] = r.nextInt(1000);
 		
-		sumaColumnas(new int[][] {});
+		int [][] m = {{1, 2, 3, 4}, {5, 6, 7, 8}, {1, 1, 1, 1}};
+		System.out.println(Arrays.toString(sumaColumnas(m)));
+		System.out.println(Arrays.toString(sumaFilas(m)));
+		int [][] sfc = sumaFilasColumnas(m);
+		System.out.println(Arrays.toString(sfc[0]));
+		System.out.println(Arrays.toString(sfc[1]));
 	}
 
 //	static int [] sumaFilas(int [][] m) {
