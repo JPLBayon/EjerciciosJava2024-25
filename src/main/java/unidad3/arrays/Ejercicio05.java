@@ -96,6 +96,71 @@ public class Ejercicio05 {
 		return mayor-menor+1;
 	}
 	
+	
+	/*
+	 * Método que acepte un vector de números enteros y retorne 
+	 * la desviación estándar de los valores almacenados en un
+	 * array de números enteros.
+	 */
+	public static double desviacionEstandar (int [] v) {
+		double aux = 0;
+		for(int i = 0; i<v.length; i++)
+			aux = aux + v[i];
+		aux = aux / v.length;
+		double aux2 =0;
+		for(int j=0; j<v.length; j++)
+			aux2 = aux2 + v[j] - aux;
+		aux2 = aux2 / (v.length - 1);
+		return aux2;
+	}
+	
+	/*
+	 * Método que reciba un vector de números enteros y retorne
+	 * la mínima diferencia entre dos valores adyacentes.
+	 */
+	public static int diferenciaMinimaVA (int[]v) {
+		int min = Integer.MAX_VALUE;
+		int aux;
+		for(int i = 0; i < (v.length - 1); i++) {
+			aux = v[i] - v[i+1];
+			if (aux < min)
+				min=aux;
+		}
+		return min;
+	}
+		
+	/*
+	 * Método que reciba un vector de números enteros y retorne otro
+	 * vector que almacene el resultado de sumar cada par de valores
+	 * almacenados en el primero (el primero con el segundo, el tercero
+	 * con el cuarto, etc). Si el vector tiene un número impar de
+	 * elementos, el último se almacenará en el vector resultado sin
+	 * sumarlo con ningún otro.
+	 */
+//	static int[] sumaPares(int [] x) {
+//		int suma[];
+//		if(x.length % 2 == 0) {
+//			suma = new int [x.length / 2];
+//		}
+//		else {
+//			suma = new int [(x.length / 2) + 1];
+//		}
+//		for(int i = 0 ; i < x.length ; i+=2) 
+//			if((x.length - 1) == i) {
+//				suma[i/2] = x[i];
+//			}else {
+//				suma[i/2] = x[i] + x[i + 1];
+//			}
+//		return suma;
+//	}
+	
+	static int[] sumaPares(int [] x) {
+		int suma[] = new int [x.length % 2 == 0 ? x.length / 2 : x.length / 2 + 1];
+		for(int i = 0 ; i < x.length ; i+=2) 
+			suma[i/2] = (x.length - 1) == i ? x[i] : x[i] + x[i + 1];
+		return suma;
+	}
+	
 
 	public static void main(String[] args) {
 		int[] v = crearVector(10);
@@ -106,6 +171,11 @@ public class Ejercicio05 {
 		System.out.printf("hay %d ocurrencias", contarOcurrencias(n, "array"));
 		intercambia(n);
 		System.out.println(Arrays.toString(n));
+		double de = desviacionEstandar(v);
+		System.out.println(de);
+		
+		int minimo=diferenciaMinimaVA(v);
+		System.out.println(minimo);
 	}
 
 }
