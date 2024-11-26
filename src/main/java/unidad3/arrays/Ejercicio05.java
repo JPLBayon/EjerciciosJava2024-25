@@ -166,6 +166,20 @@ public class Ejercicio05 {
 	}
 
 	/*
+	 * Método que reciba dos vectores de números enteros y retorne un nuevo array
+	 * que resulte de la concatenación de los dos primeros.
+	 */
+	
+	static int [] concatenar(int [] v1, int [] v2) {
+		int [] v = new int[v1.length + v2.length];
+		for (int i=0; i<v1.length; i++)
+			v[i] = v1[i];
+		for (int i=0; i<v2.length; i++)
+			v[v1.length + i] = v2[i];
+		return v;
+	}
+	
+	/*
 	 * Método que reciba un vector de números enteros y retorne la longitud de la
 	 * subsecuencia más larga de valores ordenados de menor a mayor.
 	 * 
