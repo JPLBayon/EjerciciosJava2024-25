@@ -1,5 +1,6 @@
 package unidad3.arrays;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -77,65 +78,61 @@ public class Ejercicio05 {
 			cadena[i + 1] = aux;
 		}
 	}
-	
-	
+
 	/*
-	 * Método que acepte un vector de números enteros y retorne el
-	 * rango de valores almacenados, entendiendo por rango la diferencia
-	 * entre el valor mayor y el valor menor más 1.
+	 * Método que acepte un vector de números enteros y retorne el rango de valores
+	 * almacenados, entendiendo por rango la diferencia entre el valor mayor y el
+	 * valor menor más 1.
 	 */
 	static int rango(int[] v) {
 		int mayor = Integer.MIN_VALUE;
 		int menor = Integer.MAX_VALUE;
-		for (int n: v) {
+		for (int n : v) {
 			if (n > mayor)
 				mayor = n;
 			if (n < menor)
 				menor = n;
 		}
-		return mayor-menor+1;
+		return mayor - menor + 1;
 	}
-	
-	
+
 	/*
-	 * Método que acepte un vector de números enteros y retorne 
-	 * la desviación estándar de los valores almacenados en un
-	 * array de números enteros.
+	 * Método que acepte un vector de números enteros y retorne la desviación
+	 * estándar de los valores almacenados en un array de números enteros.
 	 */
-	public static double desviacionEstandar (int [] v) {
+	public static double desviacionEstandar(int[] v) {
 		double aux = 0;
-		for(int i = 0; i<v.length; i++)
+		for (int i = 0; i < v.length; i++)
 			aux = aux + v[i];
 		aux = aux / v.length;
-		double aux2 =0;
-		for(int j=0; j<v.length; j++)
+		double aux2 = 0;
+		for (int j = 0; j < v.length; j++)
 			aux2 = aux2 + v[j] - aux;
 		aux2 = aux2 / (v.length - 1);
 		return aux2;
 	}
-	
+
 	/*
-	 * Método que reciba un vector de números enteros y retorne
-	 * la mínima diferencia entre dos valores adyacentes.
+	 * Método que reciba un vector de números enteros y retorne la mínima diferencia
+	 * entre dos valores adyacentes.
 	 */
-	public static int diferenciaMinimaVA (int[]v) {
+	public static int diferenciaMinimaVA(int[] v) {
 		int min = Integer.MAX_VALUE;
 		int aux;
-		for(int i = 0; i < (v.length - 1); i++) {
-			aux = v[i] - v[i+1];
+		for (int i = 0; i < (v.length - 1); i++) {
+			aux = v[i] - v[i + 1];
 			if (aux < min)
-				min=aux;
+				min = aux;
 		}
 		return min;
 	}
-		
+
 	/*
-	 * Método que reciba un vector de números enteros y retorne otro
-	 * vector que almacene el resultado de sumar cada par de valores
-	 * almacenados en el primero (el primero con el segundo, el tercero
-	 * con el cuarto, etc). Si el vector tiene un número impar de
-	 * elementos, el último se almacenará en el vector resultado sin
-	 * sumarlo con ningún otro.
+	 * Método que reciba un vector de números enteros y retorne otro vector que
+	 * almacene el resultado de sumar cada par de valores almacenados en el primero
+	 * (el primero con el segundo, el tercero con el cuarto, etc). Si el vector
+	 * tiene un número impar de elementos, el último se almacenará en el vector
+	 * resultado sin sumarlo con ningún otro.
 	 */
 //	static int[] sumaPares(int [] x) {
 //		int suma[];
@@ -153,14 +150,47 @@ public class Ejercicio05 {
 //			}
 //		return suma;
 //	}
-	
-	static int[] sumaPares(int [] x) {
-		int suma[] = new int [x.length % 2 == 0 ? x.length / 2 : x.length / 2 + 1];
-		for(int i = 0 ; i < x.length ; i+=2) 
-			suma[i/2] = (x.length - 1) == i ? x[i] : x[i] + x[i + 1];
-		return suma;
+
+//	static int[] sumaPares(int [] x) {
+//		int suma[] = new int [x.length % 2 == 0 ? x.length / 2 : x.length / 2 + 1];
+//		for(int i = 0 ; i < x.length ; i+=2) 
+//			suma[i/2] = (x.length - 1) == i ? x[i] : x[i] + x[i + 1];
+//		return suma;
+//	}
+
+	static int[] sumaPares(int[] x) {
+		ArrayList<Integer> suma = new ArrayList<>();
+		for (int i = 0; i < x.length; i += 2)
+			suma.add((x.length - 1) == i ? x[i] : x[i] + x[i + 1]);
+		return suma.stream().mapToInt(Integer::valueOf).toArray();
 	}
-	
+
+	/*
+	 * Método que reciba un vector de números enteros y retorne la longitud de la
+	 * subsecuencia más larga de valores ordenados de menor a mayor.
+	 * 
+	 * Ejemplo: {5, 9, 11, 2, 7, 17, -9, 0, 13, 209, 75, 99, 21} → 4
+	 *                               --------------
+	 * 
+	 */
+
+	public static int longitud(int[] v) {
+		int max = 0;
+		if (v != null && v.length > 0) {
+			max++;
+			int l = 1;
+			for (int i = 1; i < v.length; i++) {
+				if (v[i] >= v[i - 1])
+					l++;
+				else {
+					if (l > max)
+						max = l;
+					l = 1;
+				}
+			}
+		}
+		return max;
+	}
 
 	public static void main(String[] args) {
 		int[] v = crearVector(10);
@@ -173,9 +203,14 @@ public class Ejercicio05 {
 		System.out.println(Arrays.toString(n));
 		double de = desviacionEstandar(v);
 		System.out.println(de);
-		
-		int minimo=diferenciaMinimaVA(v);
+
+		int minimo = diferenciaMinimaVA(v);
 		System.out.println(minimo);
+		
+		System.out.println(longitud(new int[]{5, 9, 11, 2, 7, 17, -9, 0, 13, 209, 75, 99, 21}));
+		System.out.println(longitud(new int[]{}));
+		System.out.println(longitud(null));
+		System.out.println(longitud(new int[]{7}));
 	}
 
 }
