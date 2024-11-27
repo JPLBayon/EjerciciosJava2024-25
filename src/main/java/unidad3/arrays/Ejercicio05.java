@@ -162,7 +162,7 @@ public class Ejercicio05 {
 		ArrayList<Integer> suma = new ArrayList<>();
 		for (int i = 0; i < x.length; i += 2)
 			suma.add((x.length - 1) == i ? x[i] : x[i] + x[i + 1]);
-		return suma.stream().mapToInt(Integer::valueOf).toArray();
+		return suma.stream().mapToInt(Integer::intValue).toArray();
 	}
 
 	/*
