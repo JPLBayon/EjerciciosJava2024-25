@@ -94,7 +94,20 @@ public class Ejercicio16 {
 				"___________________________11¶____________________"};
 		
 		char [][] dibujo = new char[v.length][];
+		for (int i=0; i<v.length; i++)
+			dibujo[i] = v[i].toCharArray();
 		
+		for (String s: v)
+			System.out.println(s);
+		
+		// invocar a rellenar
+		
+		for (int i=0; i<dibujo.length; i++) {
+			for (int j=0; j<dibujo[i].length; j++)
+				System.out.print(dibujo[i][j]);
+			System.out.println();
+		}
+			
 	}
 
 }
