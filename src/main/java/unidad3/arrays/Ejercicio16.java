@@ -62,8 +62,17 @@ package unidad3.arrays;
 
 public class Ejercicio16 {
 
-	static void rellenar(char [][] m, int filIni, int colIni, char relleno) {
-		
+	static void rellenar(char [][] m, int fil, int col, char relleno) {
+		char aux = m[fil][col];
+		m[fil][col] = relleno;
+		if (col > 0 && m[fil][col-1] == aux)
+			rellenar(m, fil, col-1, relleno);
+		if (fil > 0 && m[fil-1][col] == aux)
+			rellenar(m, fil-1, col, relleno);
+		if (col < m[fil].length - 1 && m[fil][col+1] == aux)
+			rellenar(m, fil, col+1, relleno);
+		if (fil < m.length - 1 && m[fil+1][col] == aux)
+			rellenar(m, fil+1, col, relleno);
 	}
 	
 	public static void main(String[] args) {
@@ -100,7 +109,7 @@ public class Ejercicio16 {
 		for (String s: v)
 			System.out.println(s);
 		
-		// invocar a rellenar
+		rellenar(dibujo, 1, 10, '*');
 		
 		for (int i=0; i<dibujo.length; i++) {
 			for (int j=0; j<dibujo[i].length; j++)
