@@ -45,6 +45,7 @@ public class MetodosOrdenacion {
 				}
 		}
 	}
+	
 	public static void main(String[] args) {
 		int [] v = {44, 55, 12, 42, 94, 18, 6, 67}; 
 		System.out.println(Arrays.toString(v));
