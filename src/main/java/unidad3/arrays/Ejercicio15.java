@@ -27,14 +27,14 @@ public class Ejercicio15 {
 //		return m;
 //	}
 	
-	static int[][] cuadrada1(int n) {
-		int[][] m = new int[n][n];
-		for (int i=0; i<n; i++) 
-			for (int j=0; j<n; j++) 
-				m[i][j] = ;
-		}
-		return m;
-	}
+//	static int[][] cuadrada1(int n) {
+//		int[][] m = new int[n][n];
+//		for (int i=0; i<n; i++) 
+//			for (int j=0; j<n; j++) 
+//				m[i][j] = ;
+//		}
+//		return m;
+//	}
 	
 	public static void main(String[] args) {
 		

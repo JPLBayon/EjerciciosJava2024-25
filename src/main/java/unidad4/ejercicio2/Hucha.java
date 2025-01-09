@@ -1,4 +1,4 @@
-package unidad4.ejercicio1;
+package unidad4.ejercicio2;
 
 import java.util.Arrays;
 import java.util.Objects;
