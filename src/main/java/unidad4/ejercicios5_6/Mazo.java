@@ -1,4 +1,4 @@
-package unidad4.ejercicio5;
+package unidad4.ejercicios5_6;
 
 import java.util.ArrayList;
 import java.util.Collections;

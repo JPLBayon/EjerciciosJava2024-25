@@ -1,4 +1,4 @@
-package unidad4.ejercicio5;
+package unidad4.ejercicios5_6;
 
 public enum Palo {
 	TREBOLES('\u2663'), DIAMANTES('\u2666'), PICAS('\u2660'), CORAZONES('\u2665');

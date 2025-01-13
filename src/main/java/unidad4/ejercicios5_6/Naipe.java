@@ -1,6 +1,6 @@
-package unidad4.ejercicio5;
+package unidad4.ejercicios5_6;
 
-import static unidad4.ejercicio5.Rango.*;
+import static unidad4.ejercicios5_6.Rango.*;
 
 public class Naipe {
 	
