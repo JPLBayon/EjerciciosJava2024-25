@@ -10,21 +10,21 @@ public class Mazo {
 	
 	public Mazo() {
 		agregarBaraja();
-		Collections.shuffle(naipes);
 	}
 	
 	public Mazo(int n) {
 		for (int i=0; i<n; i++)
 			agregarBaraja();
-		Collections.shuffle(naipes);
+		
 	}
 	
-	private void agregarBaraja() {
+	public void agregarBaraja() {
 		for (Palo p: Palo.values())
 			for(Rango r: Rango.values()) {
 				Naipe naipe = new Naipe(p, r);
 				naipes.add(naipe);
 			}
+		Collections.shuffle(naipes);
 	}
 	
 	public Naipe get() {
@@ -45,6 +45,10 @@ public class Mazo {
 	
 	public List<Naipe> getNaipes() {
 		return Collections.unmodifiableList(naipes);
+	}
+	
+	public boolean estaVacio() {
+		return naipes.isEmpty();
 	}
 	
 }
