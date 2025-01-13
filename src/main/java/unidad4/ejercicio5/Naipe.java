@@ -1,5 +1,7 @@
 package unidad4.ejercicio5;
 
+import static unidad4.ejercicio5.Rango.*;
+
 public class Naipe {
 	
 		private Palo palo;
@@ -15,6 +17,7 @@ public class Naipe {
 		public Naipe(Palo palo, Rango rango) {
 			this.palo = palo;
 			this.rango = rango;
+			valor = rango.ordinal();
 		}
 		
 		public int getValor() {
