@@ -104,9 +104,9 @@ public class Hucha {
 		return suma;
 	}
 	
-	public int retirar(int uno, int dos, int cinco, int diez, int veinte, int cincuenta) {
-		
-	}
+//	public int retirar(int uno, int dos, int cinco, int diez, int veinte, int cincuenta) {
+//		
+//	}
 	
 	private void setContraseña(String contraseña) {
 		this.contraseña = contraseña;

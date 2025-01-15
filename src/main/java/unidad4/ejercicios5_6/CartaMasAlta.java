@@ -14,7 +14,7 @@ public class CartaMasAlta {
 			Naipe jugador = mazo.retirar();
 			Naipe ordenador = mazo.retirar();
 			System.out.println("Naipe del jugador: " + jugador);
-			System.out.println("Naipe del ordenador: " + dor);
+			System.out.println("Naipe del ordenador: " + ordenador);
 			if (jugador.getValor() > ordenador.getValor())
 				System.out.println("Gana el jugador");
 			else if (jugador.getValor() < ordenador.getValor())
