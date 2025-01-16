@@ -64,4 +64,9 @@ public class Libro extends Publicación implements Prestable {
 	public void devolver() {
 		prestado = false;
 	}
+
+	@Override
+	public boolean estáPrestado() {
+		return prestado;
+	}
 }

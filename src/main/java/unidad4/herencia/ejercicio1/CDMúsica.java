@@ -6,12 +6,12 @@ public class CDMúsica extends Publicación implements Prestable {
 	
 	public CDMúsica(int código, String título, int año) {
 		super(código, título, año);
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public CDMúsica(int código, String título) {
 		super(código, título);
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	@Override
@@ -22,5 +22,10 @@ public class CDMúsica extends Publicación implements Prestable {
 	@Override
 	public void devolver() {
 		prestado = false;
+	}
+
+	@Override
+	public boolean estáPrestado() {
+		return prestado;
 	}
 }
