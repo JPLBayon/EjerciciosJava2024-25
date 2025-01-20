@@ -2,7 +2,7 @@ package unidad4.herencia.ejercicio1;
 
 import java.time.LocalDate;
 
-public abstract class Publicación {
+public abstract class Publicación implements Comparable<Publicación> {
 
 	private int código;
 	private String título;
