@@ -79,8 +79,12 @@ public class Libro extends Publicación implements Prestable {
 		if (this == o)
 			return 0;
 		int resultado = super.compareTo(o);
-		if (getClass() == o.getClass())
-			return autoresComparator.compare(this.autores, ((Libro) o).autores);
+		if (resultado == 0) {
+			if (getClass() == o.getClass())
+				return autoresComparator.compare(this.autores, ((Libro) o).autores);
+			else
+				return getClass().getName().compareTo(o.getClass().getName());
+		}
 		return resultado;
 	}
 	
