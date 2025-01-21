@@ -1,14 +1,15 @@
 package unidad4.herencia.ejercicio1;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
-public class Libro extends Publicación implements Prestable, Comparable<Libro> {
+public class Libro extends Publicación implements Prestable {
 
-	private ArrayList<String> autores = new ArrayList<>();
+	private Set<String> autores = new TreeSet<>();
 	private boolean prestado;
 	
 	public Libro(int código, String título, int año, String ... autores ) {
@@ -23,8 +24,8 @@ public class Libro extends Publicación implements Prestable, Comparable<Libro> 
 			this.autores.add(autor);
 	}
 	
-	public List<String> getAutores() {
-		return Collections.unmodifiableList(autores);
+	public Set<String> getAutores() {
+		return Collections.unmodifiableSet(autores);
 	}
 
 	@Override
@@ -74,32 +75,28 @@ public class Libro extends Publicación implements Prestable, Comparable<Libro> 
 	}
 
 	@Override
-	public int compareTo(Libro o) {
-		int resultado = this.getTítulo().compareTo(o.getTítulo());
-		if (resultado == 0) {
-			resultado = this.getCódigo() - o.getCódigo();
-			if (resultado == 0) {
-				resultado = autoresComparator.compare(this.autores, o.autores);
-				if (resultado == 0)
-					resultado = this.getAño() - o.getAño();
-			}
-		}
+	public int compareTo(Publicación o) {
+		if (this == o)
+			return 0;
+		int resultado = super.compareTo(o);
+		if (getClass() == o.getClass())
+			return autoresComparator.compare(this.autores, ((Libro) o).autores);
 		return resultado;
 	}
 	
-	static Comparator<ArrayList<String>> autoresComparator = new Comparator<>() {
+	static Comparator<Set<String>> autoresComparator = new Comparator<>() {
 
 		@Override
-		public int compare(ArrayList<String> o1, ArrayList<String> o2) {
-			int min = Integer.min(o1.size(), o2.size());
-			int i = 0;
-			int resultado;
-			while ((resultado = o1.get(i).compareTo(o2.get(i))) == 0 && i < min)
-				i++;
-			if (resultado == 0 && i == o1.size())
-				return -1;
-			else if (resultado == 0 && i == o2.size())
+		public int compare(Set<String> o1, Set<String> o2) {
+			Iterator<String> i1 = o1.iterator();
+			Iterator<String> i2 = o2.iterator();
+			int resultado = 0;
+			while (i1.hasNext() && i2.hasNext() &&
+					(resultado = i1.next().compareTo(i2.next())) == 0);
+			if (i1.hasNext())
 				return 1;
+			else if (i2.hasNext())
+				return -1;
 			return resultado;
 		}
 		

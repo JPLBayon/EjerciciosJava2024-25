@@ -64,9 +64,23 @@ public abstract class Publicación implements Comparable<Publicación> {
 	}
 
 	@Override
+	public int compareTo(Publicación o) {
+		if (this == o)
+			return 0;
+		int resultado = año - o.año;
+		if (resultado == 0) {
+			resultado = título.compareTo(o.título);
+			if (resultado == 0)
+				return código - o.código;
+		}
+		return resultado;
+	}
+	
+	@Override
 	public String toString() {
 		return "[" + código + "," + título + "," + año + "]";
 	}
+	
 	
 	
 }
