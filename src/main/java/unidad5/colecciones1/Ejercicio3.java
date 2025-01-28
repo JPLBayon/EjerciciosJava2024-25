@@ -54,9 +54,8 @@ public class Ejercicio3 {
 				String s = m.group();
 				if (!noRepetidas.contains(s) && !repetidas.contains(s)) {
 					noRepetidas.add(s);
-				} else if (noRepetidas.contains(s)) {
+				} else if (repetidas.add(s)) {
 						noRepetidas.remove(s);
-						repetidas.add(s);
 				}
 			}
 			System.out.println("Palabras repetidas:" + repetidas);
