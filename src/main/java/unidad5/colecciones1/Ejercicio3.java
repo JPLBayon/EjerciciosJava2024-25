@@ -2,6 +2,9 @@ package unidad5.colecciones1;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.TreeSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /*
  * Crea un programa que lea de la entrada estándar una línea de texto
@@ -12,23 +15,56 @@ import java.util.Scanner;
 
 public class Ejercicio3 {
 
+//	public static void main(String[] args) {
+//		Scanner sc = new Scanner(System.in);
+//		System.out.println("> ");
+//		String entrada = sc.nextLine();
+//		ArrayList<String> repetidas = new ArrayList<String>();
+//		ArrayList<String> noRepetidas = new ArrayList<String>();
+//		while (!entrada.isEmpty()) {
+//			String[] palabras = entrada.split("\\P{L}+");
+//			for (String s : palabras) {
+//				if (!noRepetidas.contains(s) && !repetidas.contains(s)) {
+//					noRepetidas.add(s);
+//				} else if (noRepetidas.contains(s)) {
+//						noRepetidas.remove(s);
+//						repetidas.add(s);
+//				}
+//			}
+//			System.out.println("Palabras repetidas:" + repetidas);
+//			System.out.println("No repetidas: " + noRepetidas);
+//			repetidas.clear();
+//			noRepetidas.clear();
+//			System.out.println("> ");
+//			entrada = sc.nextLine();
+//		}
+//
+//	}
+	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("> ");
 		String entrada = sc.nextLine();
-		while(entrada != null) {
-			String[] palabras= entrada.split("\\P{L}+");
-			ArrayList<String> repetidas = new ArrayList<String>();
-			ArrayList<String> noRepetidas = new ArrayList<String>();
-			
-             for(String s: palabras) {
-            	 if(s)
-            	 repetidas.add(s);
-            	 noRepetidas.add(s);
-            
-             }
-            	
-			
+		TreeSet<String> repetidas = new TreeSet<String>();
+		TreeSet<String> noRepetidas = new TreeSet<String>();
+		Pattern regex = Pattern.compile("\\p{L}+");
+		while (!entrada.isEmpty()) {
+			Matcher m = regex.matcher(entrada);
+			while (m.find()) {
+				String s = m.group();
+				if (!noRepetidas.contains(s) && !repetidas.contains(s)) {
+					noRepetidas.add(s);
+				} else if (noRepetidas.contains(s)) {
+						noRepetidas.remove(s);
+						repetidas.add(s);
+				}
+			}
+			System.out.println("Palabras repetidas:" + repetidas);
+			System.out.println("No repetidas: " + noRepetidas);
+			repetidas.clear();
+			noRepetidas.clear();
+			System.out.println("> ");
+			entrada = sc.nextLine();
 		}
 
 	}
