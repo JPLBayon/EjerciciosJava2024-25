@@ -4,18 +4,18 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Palabras {
+public class PalabrasMap extends TreeMap<Integer, Set<String>> {
 	
-	private Map<Integer, Set<String>> palabras = new HashMap<>();
 	private static final Pattern REGEX = Pattern.compile("\\p{L}+");
 	
-	public Palabras() {}
+	public PalabrasMap() {}
 	
-	public Palabras(String s) {
+	public PalabrasMap(String s) {
 		añadirPalabras(s);
 	}
 	
@@ -30,10 +30,10 @@ public class Palabras {
 	
 	public boolean añadirPalabra(String palabra) {
 		Integer key = palabra.length();
-		Set<String> set = palabras.get(key); 
+		Set<String> set = get(key); 
 		if (set == null) {
 			set = new TreeSet<String>();
-			palabras.put(key, set);
+			put(key, set);
 		}
 		return set.add(palabra);
 	}
@@ -45,17 +45,12 @@ public class Palabras {
 	}
 	
 	public boolean contiene(String palabra) {
-		Set<String> set = palabras.get(palabra.length());
+		Set<String> set = get(palabra.length());
 //		if (set == null)
 //			return false;
 //		else
 //			return set.contains(palabra);
 		return !(set == null) && set.contains(palabra);
-	}
-	
-	public Set<String> getPalabras(int longitud) {
-		Set<String> set = palabras.get(longitud);
-		return set == null ? null : Collections.unmodifiableSet(set);
 	}
 	
 }
