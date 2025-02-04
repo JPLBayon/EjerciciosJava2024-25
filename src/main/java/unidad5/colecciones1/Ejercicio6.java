@@ -20,16 +20,18 @@ public class Ejercicio6 {
 				int x = Integer.parseInt(v[2]);
 				System.out.println("> ");
 				linea = in.readLine();
-				v = linea.split(" ");
-				if (v.length != n)
-					throw new RuntimeException("datos incorrectos");
-				else if (linea == null)
+				if (linea == null)
 					break;
-				// crear una cola
+				else {
+					v = linea.split(" ");
+					if (v.length != n)
+						throw new RuntimeException("datos incorrectos");
+					// crear una cola
 				
-				// almacenar los números en la cola
-				for (String s: v)
-					;
+					// almacenar los números en la cola
+					for (String s: v)
+						;
+				}
 			} catch (RuntimeException e) {
 				System.out.println("ERROR: " + e.getLocalizedMessage());
 			}
