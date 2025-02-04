@@ -19,10 +19,8 @@ public class Ejercicio5 {
 			ArrayList<Integer> num = new ArrayList<>();
 			linea = in.readLine();
 			x = linea.split(" ");
-			for (int it = 0; it < n; it++) {
+			for (int it = 0; it < n; it++)
 				num.add(Integer.parseInt(x[it]));
-
-			}
 			
 		}
 		
