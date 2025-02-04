@@ -54,9 +54,9 @@ public class Colecciones {
 	
 	static boolean valoresUnicos(Map<String, String> map) {
 		Collection<String> valores = map.values();
-		Set<String> set = new HashSet<>(valores);
-		return set.size() == valores.size();
-		
+//		Set<String> set = new HashSet<>(valores);
+//		return set.size() == valores.size();
+		return valores.stream().distinct().count() == valores.size();
 	}
 	
 }
