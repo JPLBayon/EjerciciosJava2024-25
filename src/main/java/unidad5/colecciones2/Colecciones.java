@@ -1,8 +1,10 @@
 package unidad5.colecciones2;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -58,5 +60,48 @@ public class Colecciones {
 //		return set.size() == valores.size();
 		return valores.stream().distinct().count() == valores.size();
 	}
+	
+	/*
+	 * Método llamado algunaSeRepiteAlMenos3Veces que acepte una lista de
+	 * cadenas como parámetro y retorne true si alguna cadena se repite al
+	 * menos 3 veces en la lista o false en caso contrario.
+	 * 
+	 * Resolver el problema utilizando un mapa como almacenamiento auxiliar.
+	 */
+	static boolean algunaSeRepiteAlMenos3Veces(List<String> lista) {
+		HashMap<String, Integer> m = new HashMap<>();
+//		for (String s: lista) {
+//			Integer contador = m.get(s);
+//			if (contador == null)
+//				m.put(s, 1);
+//			else {
+//				if (contador == 2)
+//					return true;
+//				m.put(s, contador + 1);
+//		}
+		
+//		for (String s: lista) {
+//			Integer contador = m.putIfAbsent(s, 1);
+//			if (contador != null) {
+//				if (contador == 2)
+//					return true;
+//				m.put(s, contador + 1);
+//			}
+//		}
+		
+		for (String s: lista) {
+			Integer contador = m.computeIfAbsent(s, k -> 0);
+			if (contador == 2)
+					return true;
+			m.put(s, contador + 1);
+		}
+		
+		return false;
+	}
+	
+	
+	
+	
+	
 	
 }
