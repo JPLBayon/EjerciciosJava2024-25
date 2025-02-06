@@ -1,9 +1,12 @@
 package unidad5.colecciones2;
 
+import java.util.ArrayDeque;
 import java.util.Collection;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -11,11 +14,16 @@ import java.util.Set;
 public class Colecciones {
 
 	public static void main(String[] args) {
-		Set<String> conjunto = new HashSet<>(Set.of("a", "aa", "aaa", "aaaa", "aaaaa"));
-		eliminarLasDeLongitudPar(conjunto);
-		System.out.println(conjunto);
-		Set<Integer>c2 = Set.of(0,2,4,10,6,20);
-		System.out.println(contieneImpares(c2));
+//		Set<String> conjunto = new HashSet<>(Set.of("a", "aa", "aaa", "aaaa", "aaaaa"));
+//		eliminarLasDeLongitudPar(conjunto);
+//		System.out.println(conjunto);
+//		Set<Integer>c2 = Set.of(0,2,4,10,6,20);
+//		System.out.println(contieneImpares(c2));
+		ArrayDeque<Integer> pila = new ArrayDeque<>();
+		List.of(23, -5, 37, 29, -19, -55, 89).forEach(pila::push);
+		negativosAbajoPositivosArriba(pila);
+		while (!pila.isEmpty())
+			System.out.println(pila.pop());
 	}
 	
 	/*
@@ -97,6 +105,72 @@ public class Colecciones {
 		}
 		
 		return false;
+	}
+	
+	/*
+	 * Método llamado negativosAbajoPositivosArriba que acepte una pila
+	 * de números enteros como parámetro y la reorganice para que se queden
+	 * debajo los negativos y encima los positivos.
+	 * 
+	 * Usa una cola como estructura de datos auxiliar.
+	 * 
+	 * Ejemplo:
+	 * 
+	 *     Entrada: [23, -5, 37, 29, -19, -55, 89] <- Tope de la pila
+	 *     Salida:  [-55, -19, -5, 23, 89, 29, 37] <- Tope de la pila
+	 */
+	
+	static void negativosAbajoPositivosArriba(Deque<Integer> pila) {
+		LinkedList<Integer> cola = new LinkedList<>();
+		int cont = 0;
+		int n;
+		while (!pila.isEmpty()) {
+			n = pila.pop();
+			cola.offer(n);
+			if (n < 0)
+				cont++;
+		}
+		while (cont > 0) {
+			n = cola.poll();
+			if (n >= 0)
+				cola.offer(n);
+			else {
+				pila.push(n);
+				cont--;
+			}
+		}
+		while (!cola.isEmpty())
+			pila.push(cola.poll());
+	}
+	
+	/*
+	 * Método llamado moda que acepte una lista de números enteros
+	 * y retorne el número que se repite con mayor frecuencia (la moda)
+	 * o 0 si la lista está vacía.
+	 */
+	
+	static int moda(List<Integer> l) {
+		if (l.isEmpty())
+			return 0;
+		
+		Map<Integer, Integer> mapa = new HashMap<>();
+		for (Integer num : l) {
+			mapa.put(num, mapa.getOrDefault(num, 0) + 1);
+//			Integer contador = mapa.get(num);
+//			if (contador == null)
+//				contador = 0;
+//			mapa.put(num, contador + 1);
+		}
+		
+		int maxValor = Integer.MIN_VALUE;
+		int moda = 0;
+		for (Map.Entry<Integer, Integer> entry : mapa.entrySet()) {
+			if (entry.getValue() > maxValor) {
+				maxValor = entry.getValue();
+				moda = entry.getKey();
+			}
+		}
+		return moda;
 	}
 	
 	
